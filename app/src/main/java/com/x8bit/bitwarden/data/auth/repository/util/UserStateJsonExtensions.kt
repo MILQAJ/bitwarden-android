@@ -58,7 +58,7 @@ fun UserStateJson.toUpdatedUserStateJson(
         .copy(
             avatarColorHex = syncProfile.avatarColor,
             stamp = syncProfile.securityStamp,
-            hasPremium = syncProfile.isPremium || syncProfile.isPremiumFromOrganization,
+            hasPremium = true,
             isTwoFactorEnabled = syncProfile.isTwoFactorEnabled,
             creationDate = syncProfile.creationDate,
         )
