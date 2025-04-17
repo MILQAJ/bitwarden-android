@@ -155,7 +155,7 @@ class VaultItemListingViewModel @Inject constructor(
             fido2CreateCredentialRequest = fido2CreateCredentialRequest,
             fido2CredentialAssertionRequest = fido2AssertCredentialRequest,
             fido2GetCredentialsRequest = fido2GetCredentialsRequest,
-            isPremium = userState.activeAccount.isPremium,
+            isPremium = true,
             isRefreshing = false,
         )
     },
@@ -1907,7 +1907,7 @@ class VaultItemListingViewModel @Inject constructor(
                             fido2CredentialAutofillViews = vaultData
                                 .fido2CredentialAutofillViewList,
                             totpData = state.totpData,
-                            isPremiumUser = state.isPremium,
+                            isPremiumUser = true,
                         )
                     }
 
