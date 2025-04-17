@@ -71,10 +71,10 @@ fun VaultData.toViewState(
             noFolderItems.size < NO_FOLDER_ITEM_THRESHOLD
         VaultState.ViewState.Content(
             itemTypesCount = itemTypesCount,
-            totpItemsCount = if (isPremium) {
+            totpItemsCount = if (true) {
                 totpItems.count()
             } else {
-                totpItems.count { it.organizationUseTotp }
+                totpItems.count()
             },
             loginItemsCount = filteredCipherViewList.count { it.type == CipherType.LOGIN },
             cardItemsCount = filteredCipherViewList.count { it.type == CipherType.CARD },
@@ -89,7 +89,7 @@ fun VaultData.toViewState(
                         hasMasterPassword = hasMasterPassword,
                         isIconLoadingDisabled = isIconLoadingDisabled,
                         baseIconUrl = baseIconUrl,
-                        isPremiumUser = isPremium,
+                        isPremiumUser = true,
                     )
                 },
             folderItems = filteredFolderViewList
@@ -123,7 +123,7 @@ fun VaultData.toViewState(
                         hasMasterPassword = hasMasterPassword,
                         isIconLoadingDisabled = isIconLoadingDisabled,
                         baseIconUrl = baseIconUrl,
-                        isPremiumUser = isPremium,
+                        isPremiumUser = true,
                     )
                 }
                 .takeIf { shouldShowUnGroupedItems }
@@ -217,7 +217,7 @@ private fun CipherView.toVaultItemOrNull(
             ),
             overflowOptions = toOverflowActions(
                 hasMasterPassword = hasMasterPassword,
-                isPremiumUser = isPremiumUser,
+                isPremiumUser = true,
             ),
             extraIconList = toLabelIcons(),
             shouldShowMasterPasswordReprompt = reprompt == CipherRepromptType.PASSWORD,
@@ -228,7 +228,7 @@ private fun CipherView.toVaultItemOrNull(
             name = name.asText(),
             overflowOptions = toOverflowActions(
                 hasMasterPassword = hasMasterPassword,
-                isPremiumUser = isPremiumUser,
+                isPremiumUser = true,
             ),
             extraIconList = toLabelIcons(),
             shouldShowMasterPasswordReprompt = reprompt == CipherRepromptType.PASSWORD,
@@ -243,7 +243,7 @@ private fun CipherView.toVaultItemOrNull(
                 ?.asText(),
             overflowOptions = toOverflowActions(
                 hasMasterPassword = hasMasterPassword,
-                isPremiumUser = isPremiumUser,
+                isPremiumUser = true,
             ),
             extraIconList = toLabelIcons(),
             shouldShowMasterPasswordReprompt = reprompt == CipherRepromptType.PASSWORD,
@@ -260,7 +260,7 @@ private fun CipherView.toVaultItemOrNull(
                 ?.asText(),
             overflowOptions = toOverflowActions(
                 hasMasterPassword = hasMasterPassword,
-                isPremiumUser = isPremiumUser,
+                isPremiumUser = true,
             ),
             extraIconList = toLabelIcons(),
             shouldShowMasterPasswordReprompt = reprompt == CipherRepromptType.PASSWORD,
@@ -283,7 +283,7 @@ private fun CipherView.toVaultItemOrNull(
                 .asText(),
             overflowOptions = toOverflowActions(
                 hasMasterPassword = hasMasterPassword,
-                isPremiumUser = isPremiumUser,
+                isPremiumUser = true,
             ),
             extraIconList = toLabelIcons(),
             shouldShowMasterPasswordReprompt = reprompt == CipherRepromptType.PASSWORD,
