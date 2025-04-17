@@ -161,7 +161,8 @@ data class SyncResponseJson(
         val providerOrganizations: List<Organization>?,
 
         @SerialName("premiumFromOrganization")
-        val isPremiumFromOrganization: Boolean,
+        val isPremiumFromOrganization: Boolean
+            get() = true,
 
         @SerialName("forcePasswordReset")
         val shouldForcePasswordReset: Boolean,
@@ -179,7 +180,8 @@ data class SyncResponseJson(
         val privateKey: String?,
 
         @SerialName("premium")
-        val isPremium: Boolean,
+        val isPremium: Boolean
+            get() = true,
 
         @SerialName("culture")
         val culture: String?,
