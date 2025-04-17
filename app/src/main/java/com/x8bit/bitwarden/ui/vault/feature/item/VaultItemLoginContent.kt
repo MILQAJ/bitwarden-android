@@ -426,53 +426,35 @@ private fun TotpField(
     onAuthenticatorHelpToolTipClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    if (enabled) {
-        BitwardenTextField(
-            label = stringResource(id = R.string.authenticator_key),
-            value = totpCodeItemData.verificationCode
-                .chunked(AUTH_CODE_SPACING_INTERVAL)
-                .joinToString(" "),
-            onValueChange = { },
-            textStyle = BitwardenTheme.typography.sensitiveInfoSmall,
-            readOnly = true,
-            singleLine = true,
-            tooltip = TooltipData(
-                onClick = onAuthenticatorHelpToolTipClick,
-                contentDescription = stringResource(id = R.string.authenticator_key_help),
-            ),
-            actions = {
-                BitwardenCircularCountdownIndicator(
-                    timeLeftSeconds = totpCodeItemData.timeLeftSeconds,
-                    periodSeconds = totpCodeItemData.periodSeconds,
-                )
-                BitwardenStandardIconButton(
-                    vectorIconRes = R.drawable.ic_copy,
-                    contentDescription = stringResource(id = R.string.copy_totp),
-                    onClick = onCopyTotpClick,
-                    modifier = Modifier.testTag(tag = "LoginCopyTotpButton"),
-                )
-            },
-            textFieldTestTag = "LoginTotpEntry",
-            cardStyle = CardStyle.Full,
-            modifier = modifier,
-        )
-    } else {
-        BitwardenTextField(
-            label = stringResource(id = R.string.authenticator_key),
-            value = "",
-            tooltip = TooltipData(
-                onClick = onAuthenticatorHelpToolTipClick,
-                contentDescription = stringResource(id = R.string.authenticator_key_help),
-            ),
-            supportingText = stringResource(id = R.string.premium_subscription_required),
-            enabled = false,
-            singleLine = false,
-            onValueChange = { },
-            readOnly = true,
-            cardStyle = CardStyle.Full,
-            modifier = modifier,
-        )
-    }
+    BitwardenTextField(
+        label = stringResource(id = R.string.authenticator_key),
+        value = totpCodeItemData.verificationCode
+            .chunked(AUTH_CODE_SPACING_INTERVAL)
+            .joinToString(" "),
+        onValueChange = { },
+        textStyle = BitwardenTheme.typography.sensitiveInfoSmall,
+        readOnly = true,
+        singleLine = true,
+        tooltip = TooltipData(
+            onClick = onAuthenticatorHelpToolTipClick,
+            contentDescription = stringResource(id = R.string.authenticator_key_help),
+        ),
+        actions = {
+            BitwardenCircularCountdownIndicator(
+                timeLeftSeconds = totpCodeItemData.timeLeftSeconds,
+                periodSeconds = totpCodeItemData.periodSeconds,
+            )
+            BitwardenStandardIconButton(
+                vectorIconRes = R.drawable.ic_copy,
+                contentDescription = stringResource(id = R.string.copy_totp),
+                onClick = onCopyTotpClick,
+                modifier = Modifier.testTag(tag = "LoginCopyTotpButton"),
+            )
+        },
+        textFieldTestTag = "LoginTotpEntry",
+        cardStyle = CardStyle.Full,
+        modifier = modifier,
+    )
 }
 
 @Composable
