@@ -108,7 +108,7 @@ class VaultViewModel @Inject constructor(
             vaultFilterData = vaultFilterData,
             viewState = VaultState.ViewState.Loading,
             isIconLoadingDisabled = settingsRepository.isIconLoadingDisabled,
-            isPremium = userState.activeAccount.isPremium,
+            isPremium = true,
             isPullToRefreshSettingEnabled = settingsRepository.getPullToRefreshEnabledFlow().value,
             baseIconUrl = userState.activeAccount.environment.environmentUrlData.baseIconUrl,
             hasMasterPassword = userState.activeAccount.hasMasterPassword,
@@ -676,7 +676,7 @@ class VaultViewModel @Inject constructor(
                 avatarColorString = activeAccountSummary.avatarColorHex,
                 accountSummaries = accountSummaries,
                 vaultFilterData = vaultFilterData,
-                isPremium = userState.activeAccount.isPremium,
+                isPremium = true,
                 showImportActionCard = shouldShowImportActionCard,
             )
         }
@@ -714,7 +714,7 @@ class VaultViewModel @Inject constructor(
             vaultData = vaultData.data,
             vaultFilterType = vaultFilterTypeOrDefault,
             isIconLoadingDisabled = state.isIconLoadingDisabled,
-            isPremium = state.isPremium,
+            isPremium = true,
             hasMasterPassword = state.hasMasterPassword,
             errorTitle = R.string.an_error_has_occurred.asText(),
             errorMessage = R.string.generic_error_message.asText(),
@@ -741,7 +741,7 @@ class VaultViewModel @Inject constructor(
                 viewState = vaultData.toViewState(
                     baseIconUrl = state.baseIconUrl,
                     isIconLoadingDisabled = state.isIconLoadingDisabled,
-                    isPremium = state.isPremium,
+                    isPremium = true,
                     hasMasterPassword = state.hasMasterPassword,
                     vaultFilterType = vaultFilterTypeOrDefault,
                 ),
@@ -775,7 +775,7 @@ class VaultViewModel @Inject constructor(
                 viewState = vaultData.data.toViewState(
                     baseIconUrl = state.baseIconUrl,
                     isIconLoadingDisabled = state.isIconLoadingDisabled,
-                    isPremium = state.isPremium,
+                    isPremium = true,
                     hasMasterPassword = state.hasMasterPassword,
                     vaultFilterType = vaultFilterTypeOrDefault,
                 ),
