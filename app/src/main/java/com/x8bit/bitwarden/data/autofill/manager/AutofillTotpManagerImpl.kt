@@ -24,28 +24,27 @@ class AutofillTotpManagerImpl(
     private val vaultRepository: VaultRepository,
 ) : AutofillTotpManager {
     override suspend fun tryCopyTotpToClipboard(cipherView: CipherView) {
-        if (settingsRepository.isAutoCopyTotpDisabled) return
-        val isPremium = authRepository.userStateFlow.value?.activeAccount?.isPremium == true
-        if (!isPremium && !cipherView.organizationUseTotp) return
-        val totpCode = cipherView.login?.totp ?: return
+    if (settingsRepository.isAutoCopyTotpDisabled) return
+    val isPremium = authRepository.userStateFlow.value?.activeAccount?.isPremium == true
+    // if (!isPremium && !cipherView.organizationUseTotp) return  <-- Удалите эту строку
+    val totpCode = cipherView.login?.totp ?: return
 
-        val totpResult = vaultRepository.generateTotp(
-            time = clock.instant(),
-            totpCode = totpCode,
+    val totpResult = vaultRepository.generateTotp(
+        time = clock.instant(),
+        totpCode = totpCode,
+    )
+
+    if (totpResult is GenerateTotpResult.Success) {
+        clipboardManager.setText(
+            text = totpResult.code,
+            toastDescriptorOverride = R.string.verification_code_totp.asText(),
         )
-
-        if (totpResult is GenerateTotpResult.Success) {
-            clipboardManager.setText(
-                text = totpResult.code,
-                toastDescriptorOverride = R.string.verification_code_totp.asText(),
+        Toast
+            .makeText(
+                context.applicationContext,
+                R.string.verification_code_totp,
+                Toast.LENGTH_LONG,
             )
-            Toast
-                .makeText(
-                    context.applicationContext,
-                    R.string.verification_code_totp,
-                    Toast.LENGTH_LONG,
-                )
-                .show()
-        }
+            .show()
     }
 }
