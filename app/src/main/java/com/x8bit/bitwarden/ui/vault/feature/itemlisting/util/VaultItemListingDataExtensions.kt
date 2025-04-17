@@ -140,8 +140,8 @@ fun VaultData.toViewState(
                 isAutofill = autofillSelectionData != null,
                 isFido2Creation = fido2CreationData != null,
                 fido2CredentialAutofillViews = fido2CredentialAutofillViews,
-                isPremiumUser = isPremiumUser,
-                isTotp = totpData != null,
+                isPremiumUser = true,
+                isTotp = true,
             ),
             displayFolderList = folderList.map { folderView ->
                 VaultItemListingState.FolderDisplayItem(
@@ -354,8 +354,8 @@ private fun List<CipherView>.toDisplayItemList(
                 ?.firstOrNull { fido2CredentialAutofillView ->
                     fido2CredentialAutofillView.cipherId == it.id
                 },
-            isPremiumUser = isPremiumUser,
-            isTotp = isTotp,
+            isPremiumUser = true,
+            isTotp = true,
         )
     }
 
@@ -402,12 +402,12 @@ private fun CipherView.toDisplayItem(
         extraIconList = this.toLabelIcons(),
         overflowOptions = this.toOverflowActions(
             hasMasterPassword = hasMasterPassword,
-            isPremiumUser = isPremiumUser,
+            isPremiumUser = true,
         ),
         optionsTestTag = "CipherOptionsButton",
         isAutofill = isAutofill,
         isFido2Creation = isFido2Creation,
-        isTotp = isTotp,
+        isTotp = true,
         shouldShowMasterPasswordReprompt = (reprompt == CipherRepromptType.PASSWORD) &&
             hasMasterPassword,
         type = this.type,
