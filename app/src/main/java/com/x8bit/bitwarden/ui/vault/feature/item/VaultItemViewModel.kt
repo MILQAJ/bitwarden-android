@@ -1196,7 +1196,7 @@ class VaultItemViewModel @Inject constructor(
         ?.cipher
         ?.toViewState(
             previousState = state.viewState.asContentOrNull(),
-            isPremiumUser = account.isPremium,
+            isPremiumUser = true,
             hasMasterPassword = account.hasMasterPassword,
             totpCodeItemData = this.data?.totpCodeItemData,
             canDelete = this.data?.canDelete == true,
