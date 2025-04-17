@@ -30,7 +30,7 @@ fun GetTokenResponseJson.Success.toUserState(
             stamp = null,
             organizationId = null,
             avatarColorHex = null,
-            hasPremium = jwtTokenData.hasPremium,
+            hasPremium = true,
             forcePasswordResetReason = this.toForcePasswordResetReason(),
             kdfType = this.kdfType,
             kdfIterations = this.kdfIterations,
