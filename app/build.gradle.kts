@@ -50,7 +50,7 @@ android {
         applicationId = "com.x8bit.bitwarden"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
-        versionCode = 20098
+        versionCode = 20101
         versionName = "2025.4.0"
 
         setProperty("archivesBaseName", "com.x8bit.bitwarden")
